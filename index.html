@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de développeur front-end spécialisé en interfaces web performantes et maintenables" />
+  <title>Pablo Wicquart — Apprentissage dev</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+
+  <!-- PLANE SCROLL OVERLAY (✅ dans le body + ✅ unique) -->
+  <svg id="plane-overlay" aria-hidden="true">
+    <defs>
+      <mask id="path-reveal-mask">
+        <rect width="100%" height="100%" fill="black"></rect>
+        <path id="mask-path" d=""></path>
+      </mask>
+    </defs>
+
+    <path id="plane-path" d=""></path>
+
+    <g id="plane">
+      <image
+        id="plane-img"
+        href="assets/img/rocket.png"
+        width="132"
+        height="132"
+        x="0"
+        y="0"
+        preserveAspectRatio="xMidYMid meet"
+      ></image>
+    </g>
+  </svg>
+
+  <!-- PATH DANS LA PAGE (SCROLLE AVEC LE CONTENU) -->
+  <svg id="page-path" aria-hidden="true">
+    <defs>
+      <mask id="page-path-mask">
+        <rect width="100%" height="100%" fill="black"></rect>
+        <path id="page-mask-path" d=""></path>
+      </mask>
+    </defs>
+    <path id="page-dotted-path" d=""></path>
+  </svg>
+
+  <!-- CROIX DE FIN (✅ unique) -->
+  <img id="cross-finish" src="assets/img/cross.png" alt="" aria-hidden="true" />
+
+  <!-- FLÈCHE (✅ unique) -->
+  <div id="arrow-overlay" aria-hidden="true">
+    <svg id="arrow-svg" preserveAspectRatio="none" aria-hidden="true">
+      <path id="arrow-path"></path>
+    </svg>
+    <div id="arrow-head" aria-hidden="true"></div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">PW.</a>
+      <ul class="nav-links">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#formation">Formation</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="accueil">
+    <div class="hero-content">
+      <p class="hero-subtitle">Apprentie developpeur</p>
+      <h1>Pablo Wicquart</h1>
+      <p class="hero-description">
+        Passionné par l'univers informatique, par son fonctionnement ainsi que son utilisation, j'ai pour vocation de développer des interfaces solides et performantes.
+      </p>
+      <div class="cta-buttons">
+        <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+        <a href="#contact" class="btn btn-secondary">Me contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section id="competences">
+    <h2>Compétences Techniques</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-image">
+          <img src="assets/img/html.jpg" alt="HTML CSS">
+        </div>
+        <h3>HTML / CSS</h3>
+        <p>Maîtrise du HTML5 sémantique, architectures CSS modulaires (BEM, ITCSS), Grid & Flexbox avancés, animations CSS performantes.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-image">
+          <img src="assets/img/javascript.jpg" alt="JavaScript">
+        </div>
+        <h3>JavaScript</h3>
+        <p>ES6+, manipulation DOM, Fetch API, programmation asynchrone, gestion d'événements optimisée, modules JS natifs.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-image">
+          <img src="assets/img/performance.jpg" alt="Performance">
+        </div>
+        <h3>Performance</h3>
+        <p>Optimisation des Core Web Vitals, lazy loading, code splitting, réduction du temps de chargement, techniques d'optimisation d'images.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-image">
+          <img src="assets/img/tools.jpg" alt="Outils">
+        </div>
+        <h3>Outils</h3>
+        <p>Git & GitHub, Docker, React, GLPI, SonarQube, méthodologies Agile.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATISTIQUES -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Langages maitrisés</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Heures de formation</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">150+</div>
+        <div class="stat-label">Heures de developpement</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Projets pro</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATION (BTS SIO) -->
+  <section id="formation" class="formation">
+    <div class="formation-shell">
+
+      <header class="formation-head reveal">
+        <p class="formation-kicker">Parcours</p>
+        <h2>FORMATION</h2>
+        <h3>BTS SIO</h3>
+        <p class="formation-sub">
+          Un parcours orienté <strong>projet</strong> et <strong>livrables</strong> :
+          analyse, développement, données, sécurité, réseau.
+        </p>
+      </header>
+
+      <div class="formation-body">
+        <div class="formation-timeline reveal">
+          <div class="tl-line" aria-hidden="true"></div>
+
+          <article class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-top">
+                <h3>Année 1</h3>
+                <span class="tl-pill">Fondations</span>
+              </div>
+              <p>
+                <strong>Bases solides :</strong> algorithmie, web, SQL, méthodologie, réseau (VLAN).
+                <strong>Objectif :</strong> développer les connaissances, mise en situation et application des aquis.
+              </p>
+              <div class="tl-tags">
+                <span class="tag">HTML/CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Git</span>
+                <span class="tag">Cisco packet tracer</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-top">
+                <h3>Année 2</h3>
+                <span class="tl-pill">Applications</span>
+              </div>
+              <p>
+                <strong>Projets plus complets :</strong> structuration, qualité, gestion des états, API, tests.
+                <strong>Objectif :</strong> professionalisation et validation des aquis.
+              </p>
+              <div class="tl-tags">
+                <span class="tag">Architecture</span>
+                <span class="tag">API</span>
+                <span class="tag">Qualité</span>
+                <span class="tag">UX</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-top">
+                <h3>Stage / Alternance</h3>
+                <span class="tl-pill">Concret</span>
+              </div>
+              <p>
+                <strong>Mise en situation :</strong> tickets, délais, retours, itérations, travail en équipe.
+                <strong>Objectif :</strong> produire utile, robuste, maintenable.
+              </p>
+              <div class="tl-tags">
+                <span class="tag">Agile</span>
+                <span class="tag">Communication</span>
+                <span class="tag">Delivery</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <aside class="formation-highlights reveal">
+          <div class="hl">
+            <span class="hl-label">Option</span>
+            <div class="hl-value">SLAM</div>
+            <p class="hl-text">Solutions Logicielles & Applications Métiers</p>
+          </div>
+
+          <div class="hl">
+            <span class="hl-label">Cible</span>
+            <div class="hl-value">Full-stack</div>
+            <p class="hl-text">UI propre, logique solide, code maintenable, architecture de base de données optimisée.</p>
+          </div>
+
+          <div class="hl">
+            <span class="hl-label">Priorité</span>
+            <div class="hl-value">Projets</div>
+            <p class="hl-text">Des preuves: livrables, décisions techniques, résultats</p>
+          </div>
+
+          <div class="formation-progress">
+            <div class="fp-top">
+              <strong>Progression</strong>
+              <span class="small">BTS SIO</span>
+            </div>
+            <div class="fp-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+              <div class="fp-fill" style="width: 35%"></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJETS (deck) -->
+  <section id="projets">
+    <h2>Projets Récents</h2>
+
+    <div class="projects-deck" id="projects-deck">
+      <div class="projects-grid deck" id="projects-cards">
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/img/chess_game.png" alt="Chess 3D">
+          </div>
+          <div class="project-content">
+            <h3>Chess 3D</h3>
+            <p>Confection d'un prototype de jeu d'échec en 3D avec l'implémentation d'une IA spécialisé.</p>
+            
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">THREE.js</span>
+              <span class="tag">Chess.js</span>
+              <span class="tag">Blender</span>
+            </div>
+            <a href="..." class="btn btn-primary project-btn" target="_blank">Visiter</a>
+            
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/img/Docker_img.jpg" alt="Solutions techniques">
+          </div>
+          <div class="project-content">
+            <h3>Solutions techniques</h3>
+            <p><strong>Context :</strong> Proposition de solution logicielle pour une entreprise fictive (SonarQube, Docker, GLPI). Refonte de la gestion des données utilisateurs.
+              <br><strong>Mission :</strong> Revue du système informatique de l'entreprise client: cadre juridique, RGPD, solution logiciel.
+              <br><strong>Outils :</strong> Docker, GLPI, SonarQube
+              <br><strong>Compétences :</strong> Comprendre les aspects légaux IT, documentation, synthetisation, ticketing, conteneurisation et réalisation de "Charte Qualité".
+            </p>
+            <div class="project-tags">
+              <span class="tag">RGPD</span>
+              <span class="tag">GLPI</span>
+              <span class="tag">Docker</span>
+              <span class="tag">SonarQube</span>
+              <span class="tag">Méthode Agile</span>
+            </div>
+            <a href="assets/pdf/Présentation_projet_TUT.pdf" class="btn btn-primary project-btn" target="_blank">Visiter</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/img/Cisco_packet_img.jpg" alt="Architecture réseau">
+          </div>
+          <div class="project-content">
+            <h3>Architecture réseau</h3>
+            <p>Développement de l'architecture type d'un réseau d'entreprise fictive avec cisco packet tracer. Création de plusieurs Vlan pour chaque service.</p>
+            <div class="project-tags">
+              <span class="tag">Cisco packet tracer</span>
+              <span class="tag">Vlan</span>
+              <span class="tag">Réseau</span>
+            </div>
+            <a href="..." class="btn btn-primary project-btn" target="_blank">Visiter</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/img/veille_img.jpg" alt="Dossier de veille">
+          </div>
+          <div class="project-content">
+            <h3>Dossier de veille</h3>
+            <p>Organisation d'une veille technologique dans le cadre du BTS. Analyse et synthetisation des informations collectées.</p>
+            <div class="project-tags">
+              <span class="tag">Automatisation</span>
+              <span class="tag">Analyse d'information</span>
+              <span class="tag">Synthèse</span>
+            </div>
+            <a href="assets/pdf/Dossier_veille_pablo_w.pdf" class="btn btn-primary project-btn" target="_blank">Visiter</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/img/remake_site_img.jpg" alt="E-commerce Frontend">
+          </div>
+          <div class="project-content">
+            <h3>Benevolat Agile Tour</h3>
+            <p>Réalisation d'un benevolat lors de l'événements Agile Tour à Montpellier en Septembre 2025.</p>
+            <div class="project-tags">
+              <span class="tag">Communication</span>
+              <span class="tag">Organisation</span>
+              <span class="tag">Initiative</span>
+              <span class="tag">Adaptation</span>
+              <span class="tag">Réseau</span>
+            </div>
+            <a href="..." class="btn btn-primary project-btn" target="_blank">Visiter</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/img/chess_game.png" alt="E-commerce Frontend">
+          </div>
+          <div class="project-content">
+            <h3>Reconditionnement PC</h3>
+            <p>Reconditionnement ordinateurs association. Analyse technique des défaillances et proposition de solutions adaptées.</p>
+            <div class="project-tags">
+              <span class="tag">Analyse technique</span>
+              <span class="tag">Diagnostique</span>
+              <span class="tag">OS</span>
+            </div>
+            <a href="..." class="btn btn-primary project-btn" target="_blank">Visiter</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/img/chess_game.png" alt="E-commerce Frontend">
+          </div>
+          <div class="project-content">
+            <h3>X</h3>
+            <p>XXX</p>
+            <div class="project-tags">
+              <span class="tag">X</span>
+              <span class="tag">X</span>
+              <span class="tag">X</span>
+            </div>
+            <a href="..." class="btn btn-primary project-btn" target="_blank">Visiter</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/img/chess_game.png" alt="E-commerce Frontend">
+          </div>
+          <div class="project-content">
+            <h3>X</h3>
+            <p>XXX</p>
+            <div class="project-tags">
+              <span class="tag">X</span>
+              <span class="tag">X</span>
+              <span class="tag">X</span>
+            </div>
+            <a href="..." class="btn btn-primary project-btn" target="_blank">Visiter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-modal-overlay" id="project-modal-overlay" aria-hidden="true"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-content">
+      <h2>Intéressé par mon profil ?</h2>
+      <p>Je suis actuellement à la recherche d'opportunités. N'hésitez pas à me contacter pour échanger sur vos projets.</p>
+      <a href="pablo.wicquart@gmail.com" class="btn btn-primary">Envoyer un email</a>
+    </div>
+  </section>
+
+  <!-- SCROLL TO TOP -->
+  <div class="scroll-top" id="scrollTop">↑</div>
+
+  <!-- JS -->
+  <script type="module" src="assets/js/main.js"></script>
+
+</body>
+</html>

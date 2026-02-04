@@ -1,0 +1,154 @@
+/* ==================== PLANE SCROLL OVERLAY (SVG FIXE) ==================== */
+/* IMPORTANT: une seule définition de #plane-overlay */
+#plane-overlay{
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  z-index: 5;
+  opacity: 0;                 /* invisible au départ */
+  transition: opacity 0.15s linear;
+  isolation: isolate;
+}
+
+/* Le pointillé "overlay" (si tu utilises encore ces ids côté HTML) */
+#plane-path{
+  fill: none;
+  stroke: rgba(59,130,246,0.55);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 2 10;
+  mask: url(#path-reveal-mask);
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.45));
+}
+
+/* Le path du masque overlay */
+#mask-path{
+  fill: none;
+  stroke: white;
+  stroke-width: 4.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Avion overlay */
+#plane{
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.55));
+}
+
+#plane-img{
+  transition: opacity 0.35s ease;
+}
+
+/* ==================== PATH DANS LA PAGE (POINTILLÉS) ==================== */
+#page-path{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.70;
+}
+
+#page-dotted-path{
+  fill: none;
+  stroke: rgba(59,130,246,0.38);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 2 12;
+  mask: url(#page-path-mask);
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.22));
+}
+
+#page-mask-path{
+  fill: none;
+  stroke: white;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ==================== CROIX (HTML) ==================== */
+#cross-finish{
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  width: 132px;
+  height: 132px;
+
+  transform: translate(-9999px, -9999px);
+  opacity: 0;
+
+  pointer-events: none;
+  z-index: 1300;
+  transition: opacity 0.35s ease;
+
+  will-change: transform, opacity;
+}
+
+/* ==================== ARROW OVERLAY (SVG line + CSS head) ==================== */
+#arrow-overlay{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1300;
+
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* apparition: fondu uniquement (pas d'animation de tracé, pas de jitter) */
+#arrow-overlay.show{
+  opacity: 1;
+}
+
+/* le SVG couvre l'écran, on dessine une ligne dedans */
+#arrow-svg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Tige: blanche, pleine, effet "peint" statique */
+#arrow-path{
+  fill: none;
+  stroke: rgba(255,255,255,0.95);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  /* ✅ pas de pointillés, pas d'animation dash */
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+
+  /* ✅ rendu "brush/peinture" statique */
+  filter:
+    drop-shadow(0 2px 0 rgba(0,0,0,0.50))
+    drop-shadow(0 0 8px rgba(255,255,255,0.18));
+}
+
+/* Pointe CSS (triangle), blanche, effet peint statique */
+#arrow-head{
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 0;
+  height: 0;
+
+  border-left: 18px solid rgba(255,255,255,0.95);
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+
+  transform: translate(-9999px, -9999px);
+
+  filter:
+    drop-shadow(0 2px 0 rgba(0,0,0,0.55))
+    drop-shadow(0 0 8px rgba(255,255,255,0.18));
+}

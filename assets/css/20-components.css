@@ -1,0 +1,290 @@
+/* ==================== BUTTONS ==================== */
+.btn {
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition-normal);
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ==================== TAGS ==================== */
+.tag {
+  padding: 0.25rem 0.75rem;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent);
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+/* ==================== SKILL CARD ==================== */
+.skill-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--space-md);
+  transition: all var(--transition-normal);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.skill-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ==================== PROJECT CARD ==================== */
+.project-card{
+  border-radius: 18px;
+  overflow: hidden;
+
+  background: linear-gradient(180deg, #111, #000);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.6),
+    inset 0 0 0 1px rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,0.06);
+
+  transition: all var(--transition-normal);
+  opacity: 0;
+  transform: translateY(20px);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card:hover{
+  transform: translateY(-8px);
+  box-shadow:
+    0 28px 80px rgba(0,0,0,.75),
+    inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+/* ===== PROJECT IMAGE (carré, moitié carte) ===== */
+.project-image{
+  width: 100%;
+  flex: 0 0 50%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.project-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Contenu */
+.project-content{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-md);
+
+  /* ✅ IMPORTANT: évite que flex "bloque" le scroll de la carte ouverte */
+  min-height: 0;
+}
+
+/*
+  Pour aligner Tags + bouton sur la même ligne,
+  ton HTML doit être :
+  <div class="project-footer">
+    <div class="project-tags">...</div>
+    <a class="btn btn-primary project-btn">Visiter</a>
+  </div>
+*/
+.project-footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.project-btn{
+  margin-top: 0;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+/* ==================== SCROLL TO TOP ==================== */
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--transition-normal);
+  z-index: 999;
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.scroll-top:hover {
+  background: var(--accent-hover);
+  transform: translateY(-4px);
+}
+
+/* ==================== SKILL IMAGE ==================== */
+.skill-image {
+  width: 100%;
+  height: 140px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.03);
+}
+
+.skill-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==================== PROJECTS DECK (EVENTAIL) ==================== */
+.projects-deck{
+  position: relative;
+  margin-top: var(--space-lg);
+  display: grid;
+  place-items: center;
+}
+
+.projects-grid.deck{
+  position: relative;
+  width: min(920px, 92vw);
+  height: 420px;
+  display: block;
+  margin: 0 auto;
+  perspective: 1200px;
+}
+
+/* Carte de base = positionnée en pile */
+.projects-grid.deck .project-card{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(280px, 70vw);
+  aspect-ratio: 3 / 4;
+
+  transform-origin: 50% 120%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  will-change: transform;
+
+  transition:
+    transform 380ms cubic-bezier(.2,.8,.2,1),
+    box-shadow 280ms ease,
+    opacity 280ms ease;
+}
+
+/* Hover léger */
+.projects-grid.deck .project-card:hover{
+  box-shadow: 0 18px 50px rgba(0,0,0,.6);
+}
+
+/* Quand une carte est ouverte, on évite que la perspective casse le z-index */
+.projects-grid.deck.has-open{
+  perspective: none;
+}
+
+/* Overlay plein écran (TRANSPARENT, juste pour fermer au clic) */
+.project-modal-overlay{
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  opacity: 0;
+  pointer-events: auto;
+  transition: opacity 80ms linear;
+  z-index: 20000 !important; /* sous la carte ouverte */
+}
+
+.project-modal-overlay.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ✅ Optionnel mais utile: quand un projet est ouvert, on bloque le scroll du site */
+body.modal-open{
+  overflow: hidden;
+}
+
+/* Carte ouverte au centre (au-dessus de tout) */
+.projects-grid.deck .project-card.is-open{
+  position: fixed;
+  left: 50%;
+  top: 60%;
+  width: min(720px, 92vw);
+
+  max-height: 90vh;
+  overflow: auto;                 /* ✅ scroll dans la carte */
+  overscroll-behavior: contain;   /* ✅ évite que la molette "passe" au body */
+  -webkit-overflow-scrolling: touch;
+
+  transform: translate(-50%, -50%) rotate(0deg) scale(1) !important;
+  box-shadow: 0 30px 90px rgba(0,0,0,.75);
+
+  opacity: 1 !important;
+  z-index: 30000 !important;
+  pointer-events: auto !important;
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  .projects-grid.deck{ height: 360px; }
+  .projects-grid.deck .project-card{ width: min(320px, 88vw); }
+  .projects-grid.deck .project-card.is-open{ width: min(520px, 94vw); top: 55%; }
+}
+
+.project-modal-overlay{ z-index: 20000 !important; }
+.projects-grid.deck .project-card.is-open{ z-index: 30000 !important; }

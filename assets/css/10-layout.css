@@ -1,0 +1,86 @@
+/* ==================== LAYERING GLOBAL ==================== */
+nav,
+section,
+.scroll-top {
+  position: relative;
+  z-index: 10;
+}
+
+/* ==================== NAVIGATION ==================== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  transition: all var(--transition-normal);
+}
+
+nav.scrolled {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ==================== NAV CONTENT ==================== */
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width var(--transition-normal);
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ==================== RESPONSIVE (LAYOUT) ==================== */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: var(--space-sm);
+  }
+}
+
+section,
+.project-card,
+.projects-grid{
+  position: relative;
+  z-index: 10;
+}

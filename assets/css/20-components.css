@@ -244,7 +244,7 @@
   inset: 0;
   background: transparent;
   opacity: 0;
-  pointer-events: auto;
+  pointer-events: none !important;
   transition: opacity 80ms linear;
   z-index: 20000 !important; /* sous la carte ouverte */
 }
@@ -288,3 +288,161 @@ body.modal-open{
 
 .project-modal-overlay{ z-index: 20000 !important; }
 .projects-grid.deck .project-card.is-open{ z-index: 30000 !important; }
+
+/* ================= CLOSE BUTTON ================= */
+
+.project-close{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(0,0,0,.65);
+  color: white;
+
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 36px;
+  text-align: center;
+
+  cursor: pointer;
+  z-index: 5;
+
+  opacity: 0;
+  transform: scale(.8);
+  transition: all .25s ease;
+}
+
+/* Visible seulement quand ouverte */
+.project-card.is-open .project-close{
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hover propre */
+.project-close:hover{
+  background: var(--accent);
+  transform: scale(1.1);
+}
+
+.projects-grid.deck .project-card.is-open{
+  overflow: auto;
+  overscroll-behavior: contain; /* évite que le scroll “débordé” parte sur la page */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Garder la nav au-dessus */
+.project-nav{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30002;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.project-nav.show{ opacity: 1; }
+
+.project-nav-btn{
+  position: fixed;
+  pointer-events: auto;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.55);
+  color: white;
+  font-size: 34px;
+  line-height: 54px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 18px 60px rgba(0,0,0,.55);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+.project-nav-btn:hover{
+  transform: translateY(-50%) scale(1.06);
+  background: rgba(0,0,0,.72);
+  border-color: rgba(255,255,255,.28);
+}
+
+/* ✅ On ne met PLUS left/right ici: géré par JS */
+.project-nav-btn.prev{ left: -9999px; }
+.project-nav-btn.next{ right: -9999px; }
+
+.project-card{
+  position: relative; /* ✅ nécessaire pour les flèches internes */
+}
+
+/* Flèches internes à la carte ouverte */
+.project-card .project-nav-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: auto;
+
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.16);
+
+  background: rgba(0,0,0,.55);
+  color: white;
+  font-size: 34px;
+  line-height: 54px;
+  text-align: center;
+
+  cursor: pointer;
+  user-select: none;
+
+  box-shadow: 0 18px 60px rgba(0,0,0,.55);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease, opacity .18s ease;
+  opacity: 0;
+}
+
+/* visibles seulement quand la carte est ouverte */
+.project-card.is-open .project-nav-btn{
+  opacity: 1;
+}
+
+.project-card .project-nav-btn:hover{
+  transform: translateY(-50%) scale(1.06);
+  background: rgba(0,0,0,.72);
+  border-color: rgba(255,255,255,.28);
+}
+
+/* Positionnement: collé aux côtés de la carte */
+.project-card .project-nav-btn.prev{ left: -70px; }
+.project-card .project-nav-btn.next{ right: -70px; }
+
+/* Mobile: on rapproche les flèches */
+@media (max-width: 768px){
+  .project-card .project-nav-btn.prev{ left: -56px; }
+  .project-card .project-nav-btn.next{ right: -56px; }
+}
+/* Quand la carte est ouverte, on laisse dépasser la nav */
+.projects-grid.deck .project-card.is-open{
+  overflow: visible !important;  /* ✅ laisse voir les flèches */
+}
+
+/* Le contenu scrollable interne */
+.project-scroll{
+  max-height: 90vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+
+  border-radius: 18px; /* garde le look carte */
+}
+
+/* Optionnel: évite que les flèches passent sous la carte */
+.project-card .project-nav-btn{
+  z-index: 10;
+}

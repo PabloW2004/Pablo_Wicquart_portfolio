@@ -64,6 +64,6 @@ p { color: var(--text-secondary); }
 }
 
 /* si carte ouverte, empêche scroll du site */
-body.modal-open{
+/*body.modal-open{
   overflow: hidden;
-}
+}*/

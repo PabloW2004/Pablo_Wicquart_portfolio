@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/projects/chess-3d"
+  to = "/projects/chess-3d/"
+  status = 301
